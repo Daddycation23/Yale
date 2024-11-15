@@ -1,0 +1,17 @@
+/* Global styles for the application */
+
+/* Reset default body styles */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+/* Set background image for the entire application */
+body {
+    background-image: url('assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

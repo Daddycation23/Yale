@@ -1,0 +1,1735 @@
+<style>
+  @font-face {
+    font-family: 'DiamendRounded3D';
+    src: url('/assets/fonts/DiamendRounded3D.otf') format('truetype');
+  }
+
+  :host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
+      180deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
+      90deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 5rem;
+    color: var(--gray-900);
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.125rem;
+    margin: 0;
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+  }
+
+  p {
+    margin: 0;
+    color: var(--gray-700);
+  }
+
+  main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+    background-image: url('assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .title-section {
+    padding-top: 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title-section h1 {
+    margin-bottom: 6rem;
+    position: relative;
+    color: #000000;
+    font-size: 5rem;
+  }
+
+  .title-section p {
+    line-height: 1.6;
+    color: #000000;
+    padding: 0 1rem;
+    margin-top: 4rem;
+    font-size: 1.1rem;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  .content h1 {
+    margin-top: 2rem;
+    position: absolute;
+  }
+
+  .content p {
+    margin-top: 1.5rem;
+  }
+
+  /* Updated navigation bar styles with no background */
+  .navigation-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem;
+    z-index: 1000;
+    background: #FEFAE0;
+  }
+
+  .navigation-bar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navigation-bar li {
+    display: inline;
+    position: relative;
+  }
+
+  .navigation-bar a {
+    text-decoration: none;
+    color: var(--gray-900);
+    font-weight: 500;
+    padding: 0.25rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    transform-origin: center;
+    background: transparent;
+    font-size: 0.9rem;
+  }
+
+  .navigation-bar a:hover {
+    color: var(--electric-violet);
+    transform: scale(1.2) translateY(-2px);
+    background: transparent;
+  }
+
+  /* Updated slider styles for seamless infinite loop */
+  .slider-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  .slider {
+    display: flex;
+    width: fit-content;
+    animation: slide 40s linear infinite;
+  }
+
+  .slide {
+    min-width: 300px;
+    padding: 2rem;
+    margin-right: 2rem;
+    background: #D1E9F6;
+    border-radius: 1rem;
+    flex-shrink: 0;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50%));
+    }
+  }
+
+  .slider:hover {
+    animation-play-state: paused;
+  }
+
+  .school-logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: -1rem;
+  }
+
+  .section-title {
+    font-family: 'DiamendRounded3D', sans-serif;
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  /* Calendar Styles */
+  .calendar-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+  }
+
+  .calendar-container {
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url('assets/yale1.jpeg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Add a subtle hover effect to the container */
+  .calendar-container:hover {
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
+    ),
+    url('assets/yale1.jpeg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .calendar-nav {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .calendar-nav:hover {
+    color: var(--electric-violet);
+  }
+
+  .calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+
+  .calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .calendar-day::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(
+      45deg,
+      rgba(83, 91, 255, 0.4),
+      rgba(128, 0, 255, 0.4)
+    );
+    border-radius: 50%;
+    z-index: -1;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                background 0.3s ease;
+    box-shadow: 0 0 15px rgba(83, 91, 255, 0.2);
+  }
+
+  .calendar-day:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    background: linear-gradient(
+      45deg,
+      rgba(83, 91, 255, 0.6),
+      rgba(128, 0, 255, 0.6)
+    );
+  }
+
+  .calendar-day.has-event::before {
+    transform: translate(-50%, -50%) scale(1);
+    background: linear-gradient(
+      45deg,
+      rgba(255, 83, 83, 0.4),
+      rgba(255, 0, 128, 0.4)
+    );
+  }
+
+  .calendar-day.has-event:hover::before {
+    background: linear-gradient(
+      45deg,
+      rgba(255, 83, 83, 0.6),
+      rgba(255, 0, 128, 0.6)
+    );
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .calendar-day:hover {
+    color: #000;
+    transform: scale(1.1);
+  }
+
+  .calendar-day.has-event:hover::after {
+    content: attr(data-event);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .calendar-day.prev-month,
+  .calendar-day.next-month {
+    color: #999;
+  }
+
+  .calendar-day.today {
+    background: rgba(135, 206, 250, 0.3); /* Light blue with transparency */
+    border-radius: 50%;
+    color: #000;
+    font-weight: bold;
+  }
+
+  .calendar-day.today::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 40px;
+    height: 40px;
+    background: rgba(135, 206, 250, 0.2);
+    border: 2px solid rgba(135, 206, 250, 0.6);
+    border-radius: 50%;
+    z-index: -1;
+    transition: transform 0.3s ease;
+  }
+
+  .calendar-day.today:hover::before {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: rgba(135, 206, 250, 0.3);
+  }
+
+  .calendar-day.today.has-event::before {
+    background: linear-gradient(
+      45deg,
+      rgba(135, 206, 250, 0.4),
+      rgba(100, 149, 237, 0.4)
+    );
+    border-color: rgba(100, 149, 237, 0.6);
+  }
+
+  /* Bulletin Board Styles */
+  .bulletin-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+  }
+
+  .bulletin-container {
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.85)
+    ),
+    url('assets/bulletinboard.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .bulletin-post {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: rotate(-1deg);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .bulletin-post:nth-child(even) {
+    transform: rotate(1deg);
+  }
+
+  .bulletin-post:hover {
+    transform: scale(1.05) rotate(0);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .bulletin-post h3 {
+    color: #000;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .bulletin-post p {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-date {
+    color: #666;
+    font-size: 0.875rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-style: italic;
+  }
+
+  /* Add a push-pin effect */
+  .bulletin-post::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at center, #ff4444, #cc0000);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Mobile Responsive Styles */
+  @media screen and (max-width: 768px) {
+    /* Title Section */
+    .title-section {
+      padding-top: 4rem;
+    }
+
+    .title-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .title-section p {
+      font-size: 1rem;
+      padding: 0 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .school-logo {
+      width: 150px;
+      height: 150px;
+    }
+
+    /* Navigation Bar */
+    .navigation-bar {
+      padding: 0.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .navigation-bar ul {
+      gap: 0.5rem;
+      padding: 0 1rem;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+
+    .navigation-bar a {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* Happening Section */
+    .happening-section {
+      margin: 2rem auto;
+    }
+
+    .slide {
+      min-width: 250px;
+      padding: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .slide h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .slide p {
+      font-size: 0.9rem;
+    }
+
+    .slide .date {
+      font-size: 0.8rem;
+    }
+
+    .happening-section {
+      padding: 0 0.5rem;
+    }
+
+    /* Calendar Section */
+    .calendar-section {
+      margin: 2rem auto;
+      padding: 0 0.5rem;
+    }
+
+    .calendar-container {
+      padding: 1rem;
+    }
+
+    .calendar-day {
+      font-size: 0.9rem;
+    }
+
+    .calendar-day::before {
+      width: 32px;
+      height: 32px;
+    }
+
+    .calendar-weekdays {
+      font-size: 0.8rem;
+    }
+
+    .calendar-header h3 {
+      font-size: 1.2rem;
+    }
+
+    /* Bulletin Board Section */
+    .bulletin-section {
+      margin: 2rem auto;
+      padding: 0 0.5rem;
+    }
+
+    .bulletin-container {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .bulletin-post {
+      margin: 0 0.5rem;
+    }
+
+    .bulletin-post h3 {
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Additional adjustments for very small screens */
+  @media screen and (max-width: 480px) {
+    .title-section h1 {
+      font-size: 2rem;
+    }
+
+    .school-logo {
+      width: 120px;
+      height: 120px;
+    }
+
+    .calendar-day::before {
+      width: 28px;
+      height: 28px;
+    }
+
+    .bulletin-post {
+      padding: 1rem;
+    }
+
+    .slide {
+      min-width: 200px;
+      padding: 1rem;
+      margin-right: 0.75rem;
+    }
+  }
+
+  /* Fix for horizontal scrolling issue */
+  body {
+    overflow-x: hidden;
+  }
+
+  main {
+    overflow-x: hidden;
+  }
+
+  .bulletin-post {
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .bulletin-post-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .bulletin-post.flipped .bulletin-post-inner {
+    transform: rotateY(180deg);
+  }
+
+  .bulletin-front,
+  .bulletin-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.5rem;
+  }
+
+  .bulletin-front {
+    transform: rotateY(0deg);
+  }
+
+  .bulletin-back {
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    max-height: 400px;
+  }
+
+  .bulletin-post h3 {
+    margin-bottom: 1rem;
+  }
+
+  .bulletin-post p {
+    margin-bottom: 2rem;
+  }
+
+  /* Update hover effect */
+  .bulletin-post:hover .bulletin-post-inner {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Maintain push-pin effect */
+  .bulletin-post::before {
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    .bulletin-back {
+      max-height: 300px;
+    }
+  }
+
+  .bulletin-post {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .bulletin-post.expanded {
+    transform: scale(1.02) rotate(0);
+    z-index: 2;
+  }
+
+  .bulletin-post p {
+    transition: all 0.3s ease;
+  }
+
+  .bulletin-post p.truncated {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .expand-indicator {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+    transition: all 0.3s ease;
+  }
+
+  .bulletin-post.expanded .expand-indicator {
+    transform: rotate(180deg);
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .add-post-button {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #D1E9F6;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .add-post-button:hover {
+    transform: scale(1.1);
+    background: #bfe0f2;
+  }
+
+  .add-post-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-container h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .form-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .form-button.cancel {
+    background: #f0f0f0;
+    color: #666;
+  }
+
+  .form-button.submit {
+    background: #D1E9F6;
+    color: #333;
+  }
+
+  .form-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: 768px) {
+    .form-container {
+      width: 95%;
+      padding: 1.5rem;
+    }
+  }
+
+  /* Mobile styles */
+  @media screen and (max-width: 768px) {
+    .slider-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      padding: 0 1rem;
+    }
+
+    .slider {
+      display: flex;
+      width: fit-content;
+      animation: slide 40s linear infinite;
+    }
+
+    .slide {
+      min-width: 250px;
+      padding: 1.5rem;
+      margin-right: 1rem;
+      background: #D1E9F6;
+      border-radius: 1rem;
+      flex-shrink: 0;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-50%));
+      }
+    }
+
+    .slider:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Even smaller screens */
+  @media screen and (max-width: 480px) {
+    .slide {
+      min-width: 200px;
+      padding: 1rem;
+      margin-right: 0.75rem;
+    }
+  }
+
+  .info-button {
+    position: absolute;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #D1E9F6;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .info-icon {
+    font-family: serif;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .info-button:hover {
+    transform: scale(1.1);
+    background: #bfe0f2;
+  }
+
+  .info-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .info-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .info-content h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+  }
+
+  .info-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+
+  .close-button:hover {
+    color: #333;
+  }
+
+  @media screen and (max-width: 768px) {
+    .info-content {
+      width: 95%;
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  }
+
+  .calendars-newsletters-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+  }
+
+  .buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .calendar-button {
+    background: #FFC6C6;
+    border: none;
+    border-radius: 1rem;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .calendar-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: #ffb3b3;
+  }
+
+  .button-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  /* Mobile responsive styles */
+  @media screen and (max-width: 768px) {
+    .buttons-container {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .calendar-button {
+      padding: 1.5rem;
+    }
+
+    .button-text {
+      font-size: 1rem;
+    }
+  }
+
+  .calendar-button {
+    position: relative;
+    width: 100%;
+  }
+
+  .calendar-button[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    min-width: fit-content;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    white-space: pre-wrap;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+  }
+
+  .calendar-button[data-tooltip]:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Adjust tooltip width for mobile */
+  @media screen and (max-width: 768px) {
+    .calendar-button[data-tooltip]::after {
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .footer-section {
+    width: 100%;
+    background: rgba(254, 250, 224, 0.9); /* Using the same color as nav bar with transparency */
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
+
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links a {
+    color: #333;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--electric-violet);
+    transform: translateY(-2px);
+  }
+
+  .copyright {
+    color: #666;
+    font-size: 0.875rem;
+  }
+
+  /* Mobile responsive styles */
+  @media screen and (max-width: 768px) {
+    .social-links {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+
+    .footer-section {
+      padding: 1.5rem 0;
+    }
+  }
+
+  .social-link-with-tooltip {
+    position: relative;
+  }
+
+  .social-link-with-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-link-with-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .footer-info {
+    margin: 1.5rem 0;
+    color: #333;
+  }
+
+  .school-name {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .address {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #666;
+  }
+
+  .quick-links-container {
+    position: fixed;
+    left: 1rem;
+    top: 4rem;
+    z-index: 10000;
+  }
+
+  .quick-links-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: white;
+    padding: 1rem 0;
+    min-width: 250px;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+
+  .quick-links-dropdown.show {
+    display: block;
+  }
+
+  .quick-links-dropdown a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  .quick-links-dropdown a:hover {
+    background: #FFC6C6;
+    color: #000;
+  }
+
+  /* Tablet Styles (768px to 1024px) */
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .title-section {
+      padding-top: 5rem;
+      width: 90%;
+    }
+
+    .title-section h1 {
+      font-size: 3.5rem;
+    }
+
+    .school-logo {
+      width: 180px;
+      height: 180px;
+    }
+
+    /* Calendar adjustments for tablet */
+    .calendar-section,
+    .bulletin-section,
+    .calendars-newsletters-section {
+      width: 90%;
+      padding: 0 2rem;
+    }
+
+    .buttons-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Slider adjustments */
+    .slide {
+      min-width: 280px;
+      padding: 1.75rem;
+    }
+
+    /* Quick links adjustments */
+    .quick-links-dropdown {
+      min-width: 300px;
+    }
+  }
+
+  /* Mobile Styles (up to 767px) */
+  @media screen and (max-width: 767px) {
+    .title-section {
+      padding-top: 4rem;
+      width: 95%;
+    }
+
+    .title-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .title-section p {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+
+    .school-logo {
+      width: 140px;
+      height: 140px;
+    }
+
+    /* Navigation adjustments */
+    .navigation-bar {
+      padding: 0.25rem;
+    }
+
+    .navigation-bar ul {
+      gap: 0.25rem;
+      overflow-x: auto;
+      padding: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .navigation-bar a {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    /* Section adjustments */
+    .calendar-section,
+    .bulletin-section,
+    .calendars-newsletters-section {
+      width: 95%;
+      padding: 0 1rem;
+      margin: 2rem auto;
+    }
+
+    .buttons-container {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    /* Slider adjustments */
+    .slide {
+      min-width: 240px;
+      padding: 1.25rem;
+    }
+
+    /* Quick links adjustments */
+    .quick-links-container {
+      left: 0.5rem;
+    }
+
+    .quick-links-dropdown {
+      min-width: 250px;
+      max-height: 70vh;
+    }
+
+    /* Footer adjustments */
+    .footer-section {
+      padding: 1.5rem 0;
+    }
+
+    .social-links {
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-info {
+      padding: 0 1rem;
+    }
+  }
+
+  /* Small Mobile Styles (up to 480px) */
+  @media screen and (max-width: 480px) {
+    .title-section h1 {
+      font-size: 2rem;
+    }
+
+    .school-logo {
+      width: 120px;
+      height: 120px;
+    }
+
+    .slide {
+      min-width: 200px;
+      padding: 1rem;
+    }
+
+    .calendar-day {
+      font-size: 0.8rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+    }
+  }
+
+  /* Ensure smooth transitions across all screen sizes */
+  * {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Prevent horizontal scrolling */
+  body, main {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+</style>
+
+<main class="main">
+  <!-- Quick Links Button and Dropdown -->
+  <div class="quick-links-container">
+    <button 
+      class="quick-links-button social-link-with-tooltip" 
+      data-tooltip="Quick links"
+      (click)="toggleQuickLinks()"
+      style="width: 48px; height: 48px; 
+             background: #FFC6C6; 
+             border: none;
+             border-radius: 50%;
+             cursor: pointer;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             transition: all 0.3s ease;
+             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" fill="currentColor"/>
+      </svg>
+    </button>
+    <div class="quick-links-dropdown" [class.show]="showQuickLinks">
+      <a href="#login">Login</a>
+      <a href="#edit-page">Edit this page</a>
+      <a href="#page-history">Page History</a>
+      <a href="#current-students">Current Students</a>
+      <a href="#faculty-staff">Faculty & Staff</a>
+      <a href="#wiki-sitemap">Wiki Sitemap</a>
+      <a href="#knowledgebase">Knowledgebase</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#courses">Courses</a>
+      <a href="#opportunities">Opportunities</a>
+      <a href="#resources">Resources</a>
+      <a href="#school-world">School of Art in the World</a>
+    </div>
+  </div>
+
+  <!-- Title and Description Section -->
+  <div class="title-section">
+    <div class="w-full flex justify-center items-center relative">
+      <img src="assets/Yale_School_of_Art.png" alt="Yale School of Art" 
+           class="w-[200px] h-[200px] mb-8 -mt-4 shadow-lg" />
+    </div>
+    <h1 class="text-5xl font-bold text-gray-900">{{ title }}</h1>
+    <p class="text-base leading-relaxed text-gray-700 mt-16 px-4 max-w-prose mx-auto">
+      The Yale School of Art is a graduate school that confers MFAs in Graphic Design, Painting/Printmaking, Photography, and Sculpture; and offers undergraduate-level art courses to Yale College students. Our website exists as an ongoing collaborative experiment in digital publishing and information sharing. It functions as a wiki—all members of the School of Art community have the ability to add new, and edit most existing content.
+    </p>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content">
+    <div class="left-side">
+    </div>
+    <div class="right-side">
+    </div>
+  </div>
+
+  <!-- Updated Happening at SOA Section with duplicated slides -->
+  <section class="happening-section">
+    <h2 class="section-title">Happening at SOA</h2>
+    <div class="slider-container">
+      <div class="slider">
+        <!-- First set of slides -->
+        <div class="slide">
+          <h3>Exhibition Opening</h3>
+          <p>Senior Art Exhibition - Opening Reception</p>
+          <p class="date">November 15, 2024</p>
+        </div>
+        <div class="slide">
+          <h3>Guest Lecture</h3>
+          <p>Contemporary Art in Digital Age</p>
+          <p class="date">November 18, 2024</p>
+        </div>
+        <div class="slide">
+          <h3>Workshop</h3>
+          <p>Advanced Printmaking Techniques</p>
+          <p class="date">November 20, 2024</p>
+        </div>
+        <div class="slide">
+          <h3>Student Show</h3>
+          <p>First Year MFA Exhibition</p>
+          <p class="date">November 22, 2024</p>
+        </div>
+        <!-- Exact duplicate of slides -->
+        <div class="slide">
+          <h3>Exhibition Opening</h3>
+          <p>Senior Art Exhibition - Opening Reception</p>
+          <p class="date">November 15, 2024</p>
+        </div>
+        <div class="slide">
+          <h3>Guest Lecture</h3>
+          <p>Contemporary Art in Digital Age</p>
+          <p class="date">November 18, 2024</p>
+        </div>
+        <div class="slide">
+          <h3>Workshop</h3>
+          <p>Advanced Printmaking Techniques</p>
+          <p class="date">November 20, 2024</p>
+        </div>
+        <div class="slide">
+          <h3>Student Show</h3>
+          <p>First Year MFA Exhibition</p>
+          <p class="date">November 22, 2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Calendar Section -->
+  <section class="calendar-section">
+    <h2 class="section-title">On the Calendar</h2>
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button class="calendar-nav" (click)="previousMonth()">&lt;</button>
+        <h3>{{ getMonthAndYear() }}</h3>
+        <button class="calendar-nav" (click)="nextMonth()">&gt;</button>
+      </div>
+      <div class="calendar-weekdays">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <div class="calendar-days">
+        <div 
+          *ngFor="let day of calendarDays" 
+          class="calendar-day"
+          [ngClass]="{
+            'prev-month': day.isPrevMonth,
+            'next-month': day.isNextMonth,
+            'has-event': day.event,
+            'today': isToday(day.date)
+          }"
+          [attr.data-event]="day.event"
+        >
+          {{ day.date.getDate() }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Update the bulletin board section -->
+  <section class="bulletin-section">
+    <div class="section-header">
+      <button class="info-button" (click)="toggleInfoMessage()">
+        <span class="info-icon">i</span>
+      </button>
+      <h2 class="section-title">Community Bulletin Board</h2>
+      <button class="add-post-button" (click)="toggleAddPostForm()">
+        <span>+</span>
+      </button>
+    </div>
+
+    <!-- Add Info Message Popup -->
+    <div class="info-popup" *ngIf="showInfoMessage">
+      <div class="info-content">
+        <h3>A message from Communications:</h3>
+        <p>
+          All members of the SoA community are invited to edit the majority of the wiki however they like, but we ask that any non-curricular projects or initiatives that you would like to share be added to this section of the homepage.
+        </p>
+        <p>
+          Students are also invited to reach out to Assistant Director of Communications Lindsey Mancini if they would like additional support from the School in bringing attention to their work and endeavors.
+        </p>
+        <button class="close-button" (click)="toggleInfoMessage()">×</button>
+      </div>
+    </div>
+
+    <!-- Add Post Form -->
+    <div class="add-post-form" *ngIf="showAddPostForm">
+      <div class="form-container">
+        <h3>Add New Post</h3>
+        <input 
+          type="text" 
+          [(ngModel)]="newPost.title" 
+          placeholder="Title"
+          class="form-input"
+        >
+        <textarea 
+          [(ngModel)]="newPost.description" 
+          placeholder="Content"
+          class="form-input"
+          rows="4"
+        ></textarea>
+        <div class="form-buttons">
+          <button class="form-button cancel" (click)="toggleAddPostForm()">Cancel</button>
+          <button class="form-button submit" (click)="addNewPost()">Post</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Existing Bulletin Posts -->
+    <div class="bulletin-container">
+      <div *ngFor="let post of bulletinPosts; let i = index" 
+           class="bulletin-post"
+           [class.expanded]="post.isExpanded"
+           (click)="togglePost(i)">
+        <h3>{{ post.title }}</h3>
+        <p class="text-gray-700 text-base leading-relaxed mb-8" [class.truncated]="!post.isExpanded">
+          {{ post.isExpanded ? post.fullDescription : post.description }}
+        </p>
+        <span class="post-date">Posted: {{ post.date }}</span>
+        <span class="expand-indicator">{{ post.isExpanded ? '▼' : '▶' }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Update the buttons in the Calendars & Newsletters section -->
+  <section class="calendars-newsletters-section">
+    <h2 class="section-title">Calendars & Newsletters</h2>
+    <div class="buttons-container">
+      <button class="calendar-button" data-tooltip="Containing those events open to the public.">
+        <span class="button-text">Public Calendar</span>
+      </button>
+      <button class="calendar-button" data-tooltip="Containing events and exhibitions hosted by, led by, or featuring members of the School of Art community.">
+        <span class="button-text">School of Art on the World</span>
+      </button>
+      <button class="calendar-button" data-tooltip="Containing those events open only to the SoA community.">
+        <span class="button-text">Community Calendar</span>
+      </button>
+      <button class="calendar-button" data-tooltip="Get news from the Yale School of Art in your inbox: Sign up for our newsletters >> &#10;&#10;We publish two newsletters during the academic year:&#10;&#10;News From New Haven — A public monthly newsletter about news and events happening on campus.&#10;&#10;Week at SoA — A weekly community-only email listing SoA events as well as public and university events in New Haven.">
+        <span class="button-text">Newsletters</span>
+      </button>
+    </div>
+  </section>
+</main>
+
+<!-- Navigation bar without icons -->
+<nav class="navigation-bar">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About the School</a></li>
+    <li><a href="#apply">Apply to the School</a></li>
+    <li><a href="#exhibitions">Exhibitions</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#events">Public Events</a></li>
+  </ul>
+</nav>
+
+<router-outlet />
+
+<footer class="footer-section">
+  <div class="footer-content">
+    <div class="social-links">
+      <!-- Support the School link -->
+      <a href="https://www.art.yale.edu/about/support-the-school" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Support the School"
+         class="social-link-with-tooltip"
+         data-tooltip="Support the School">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- Visiting link -->
+      <a href="https://www.art.yale.edu/about/visiting" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Visiting"
+         class="social-link-with-tooltip"
+         data-tooltip="Visiting">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 8v2h20V8L12 2zm-1 4c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm6 10h-2v-2h2v2zm-4 0h-2v-2h2v2zm-4 0H7v-2h2v2zm10 4H5v-3H3v5h18v-5h-2v3z" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- Instagram link -->
+      <a href="https://www.instagram.com/yaleschoolofart/" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Instagram"
+         class="social-link-with-tooltip"
+         data-tooltip="Instagram">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- Facebook link -->
+      <a href="https://www.facebook.com/YaleSchoolofArt/" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Facebook"
+         class="social-link-with-tooltip"
+         data-tooltip="Facebook">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.642c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.125-5.864 10.125-11.854z" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- YouTube link -->
+      <a href="https://www.youtube.com/channel/UCDwJT0mYodTSodcpH-hGmdA" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="YouTube"
+         class="social-link-with-tooltip"
+         data-tooltip="YouTube">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- Contact us link -->
+      <a href="https://www.art.yale.edu/about/contact" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Contact us"
+         class="social-link-with-tooltip"
+         data-tooltip="Contact us">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- Sitemap link -->
+      <a href="https://www.art.yale.edu/sitemap" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Sitemap"
+         class="social-link-with-tooltip"
+         data-tooltip="Sitemap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- Accessibility link -->
+      <a href="https://your.yale.edu/policies-procedures/policies/1605-web-accessibility-policy" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         aria-label="Accessibility at Yale"
+         class="social-link-with-tooltip"
+         data-tooltip="Accessibility at Yale">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" fill="currentColor"/>
+        </svg>
+      </a>
+    </div>
+    <div class="footer-info">
+      <p class="text-lg font-medium text-gray-900">Yale School of Art</p>
+      <p class="text-sm text-gray-600">1156 Chapel Street, POB 208339</p>
+      <p class="text-sm text-gray-600">New Haven, Connecticut, 06520-8339</p>
+    </div>
+    <div class="copyright">
+      <p class="text-sm text-gray-500">© 2024 Yale School of Art. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
